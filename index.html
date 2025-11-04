@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TONMiner</title>
+  <style>
+    body {
+      background: linear-gradient(180deg, #0098ea 0%, #0066cc 100%);
+      color: white;
+      font-family: 'Inter', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.4em;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.1em;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    .miner {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #00c3ff, #007aff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 30px rgba(0, 200, 255, 0.7);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 20px rgba(0,200,255,0.7); }
+      50% { transform: scale(1.1); box-shadow: 0 0 40px rgba(0,200,255,1); }
+      100% { transform: scale(1); box-shadow: 0 0 20px rgba(0,200,255,0.7); }
+    }
+
+    .balance {
+      margin-top: 25px;
+      font-size: 1.4em;
+      font-weight: bold;
+    }
+
+    .btn {
+      margin-top: 30px;
+      background-color: #00c3ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn:hover {
+      background-color: #33d1ff;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="miner">
+    ⛏️
+  </div>
+  <h1>TONMiner</h1>
+  <p>Ваш виртуальный майнинг запущен!</p>
+  <div class="balance">Баланс: <span id="balance">0.000</span> TON</div>
+  <button class="btn" onclick="startMining()">💎 Начать майнинг</button>
+
+  <script>
+    let balance = 0.000;
+    let mining = false;
+    let interval;
+
+    function startMining() {
+      if (mining) return;
+      mining = true;
+      interval = setInterval(() => {
+        balance += 0.0001;
+        document.getElementById('balance').textContent = balance.toFixed(3);
+      }, 500);
+    }
+  </script>
+</body>
+</html>
